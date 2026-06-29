@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
+// Health check route for ping services (cron-job.org, Render uptime, etc.)
+app.get('/', (req, res) => {
+    res.status(200).send('InAmigos API is active and running smoothly!');
+});
+
 // Load volunteers data
 const dataPath = path.join(__dirname, 'data', 'volunteers.json');
 
